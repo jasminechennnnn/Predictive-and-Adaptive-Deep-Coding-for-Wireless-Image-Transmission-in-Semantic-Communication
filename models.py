@@ -270,7 +270,7 @@ def Power_norm_complex(z, P = 1):
     return z_out
 
 # The (real) AWGN channel    
-def AWGN_channel(x, snr, P = 2):  
+def AWGN_channel(x, snr, P = 1):  
     batch_size, length = x.shape
     gamma = 10 ** (snr / 10.0)
     noise = torch.sqrt(P/gamma)*torch.randn(batch_size, length).cuda()
@@ -287,7 +287,7 @@ def AWGN_complex(x, snr, Ps = 1):
     return y
 
 # Please set the symbol power if it is not a default value
-def Fading_channel(x, snr, P = 2):
+def Fading_channel(x, snr, P = 1):
     gamma = 10 ** (snr / 10.0)
     [batch_size, feature_length] = x.shape
     K = feature_length//2
@@ -322,7 +322,7 @@ def Power_norm_VLC(z, cr, P = 1):
     return torch.sqrt(Kv*P)*z/z_M.t()
 
 
-def AWGN_channel_VLC(x, snr, cr, P = 2):  
+def AWGN_channel_VLC(x, snr, cr, P = 1):  
     batch_size, length = x.shape
     gamma = 10 ** (snr / 10.0)
     mask = mask_gen(length, cr).cuda()
@@ -332,7 +332,7 @@ def AWGN_channel_VLC(x, snr, cr, P = 2):
     return y
 
 
-def Fading_channel_VLC(x, snr, cr, P = 2):
+def Fading_channel_VLC(x, snr, cr, P = 1):
     gamma = 10 ** (snr / 10.0)
     [batch_size, feature_length] = x.shape
     K = feature_length//2
