@@ -7,7 +7,7 @@ Zhang W, Zhang H, Ma H, et al. Predictive and Adaptive Deep Coding for Wireless 
 
 # 0. Environment
 ```bash
-conda create -n padc python=3.8
+conda create -n padc python=3.9
 conda activate padc
 pip install -r requirements.txt
 ```
@@ -16,4 +16,10 @@ pip install -r requirements.txt
 ```bash
 # CIFAR10, CIFAR100
 python download.py
+```
+
+# 2. Training
+```bash
+# DeepJSCC_V trained on cifar10
+python3 DeepJSCC_V_train_CIFAR10.py
 ```
